@@ -1,0 +1,22 @@
+{
+  "name": "eva-translate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.1.0",
+    "cheerio": "^1.0.0-rc.12",
+    "http-proxy-agent": "^5.0.0",
+    "nodemon": "^2.0.22",
+    "request": "^2.88.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}
