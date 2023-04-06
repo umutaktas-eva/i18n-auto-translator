@@ -1,52 +1,29 @@
-import { translate } from "@vitalets/google-translate-api";
-// @ts-ignore
-import request from "request";
-import { load } from "cheerio";
-import createHttpProxyAgent from "http-proxy-agent";
+import { translate } from "./translate.js";
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const texts = [
+  "Hello",
+  "How are you?",
+  "I'm fine, thank you.",
+  "And you?",
+  "I'm fine too.",
+  "Goodbye",
+  "See you later",
+  "Good night",
+  "Good morning",
+  "Good afternoon",
+  "Good evening",
+  "Have a nice day",
+  "Have a nice weekend",
+  "Have a nice week",
+  "Have a nice month",
+  "Have a nice year",
+  "Have a nice life",
+  "Have a nice day",
+  "Have a nice weekend",
+  "Have a nice week",
+];
 
-const getProxy = async () => {
-  let ip_addresses: string[] = [];
-
-  let response = await fetch("https://free-proxy-list.net/");
-  let html = await response.text();
-  const $ = load(html);
-  $("td:nth-child(1)").each(function (index, value) {
-    let isSupportingGoogle =
-      $(this).parent().find("td:nth-child(6)").text() === "yes";
-    let ssl =
-      $(this).parent().find("td:nth-child(7)").text() === "yes"
-        ? "https"
-        : "http";
-    let ip = $(this).text();
-    let port = $(this).parent().find("td:nth-child(2)").text();
-    if (isSupportingGoogle) {
-      ip_addresses.push(`${ssl}://${ip}:${port}`);
-    }
-  });
-
-  return ip_addresses[Math.floor(Math.random() * ip_addresses.length)];
-};
-
-let currentProxy = await getProxy();
-let agent = createHttpProxyAgent(`${currentProxy}`);
-while (true) {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 1000);
-    const result = await translate("Hello", {
-      to: "tr",
-      fetchOptions: {
-        agent,
-        signal: controller.signal,
-      },
-    });
-    console.log(result.text);
-    clearTimeout(timeout);
-  } catch (e) {
-    console.log(e);
-    currentProxy = await getProxy();
-    agent = createHttpProxyAgent(`${currentProxy}`);
-  }
+for await (const text of texts) {
+  const result = await translate(text, "tr");
+  console.log(text, result.text);
 }
