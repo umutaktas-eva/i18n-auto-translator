@@ -1,7 +1,7 @@
 import { load } from "cheerio";
 import createHttpProxyAgent from "http-proxy-agent";
 
-export const getAgent = async () => {
+export const getAgent = async (options: { log: boolean }) => {
   let ip_addresses: string[] = [];
 
   let response = await fetch("https://free-proxy-list.net/");
@@ -22,6 +22,6 @@ export const getAgent = async () => {
   });
 
   let ip = ip_addresses[Math.floor(Math.random() * ip_addresses.length)];
-
+  if (options.log) console.log("Using proxy: ", ip);
   return createHttpProxyAgent(ip);
 };
