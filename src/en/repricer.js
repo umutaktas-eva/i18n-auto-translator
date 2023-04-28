@@ -1,8 +1,3 @@
-// SKIPPED PARTS
-// 1: Store Level Settings > Brand Pricing Config > Twin Sku Pricing
-// 2: Store Level Settings > Other Pricing Settings
-
-// Current Line: repricer/main: 5166
 export default {
   get_help: 'get help from here',
   not_enabled: {

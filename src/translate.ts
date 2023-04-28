@@ -15,16 +15,13 @@ export const translate = async (
   console.log(`Translating "${text}" to ${to}...`);
   let result;
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), wait);
     result = await translation(text, {
       to,
       fetchOptions: {
         agent,
-        signal: controller.signal,
+        signal: AbortSignal.timeout(wait),
       },
     });
-    clearTimeout(timeout);
   } catch (error) {
     console.log(error);
     agent = await getAgent({ log: true });
