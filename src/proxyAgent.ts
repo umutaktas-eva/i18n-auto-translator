@@ -2,11 +2,11 @@ import { load } from "cheerio";
 import createHttpProxyAgent from "http-proxy-agent";
 let ip_addresses: string[] = [];
 let proxyProviders = [
-  "https://www.sslproxies.org/",
   "https://free-proxy-list.net/",
-  "https://www.us-proxy.org/",
   "https://free-proxy-list.net/uk-proxy.html",
   "https://free-proxy-list.net/anonymous-proxy.html",
+  "https://www.us-proxy.org/",
+  "https://www.sslproxies.org/",
 ];
 let proxyProviderIndex = 0;
 export const getAgent = async (options: { log: boolean }) => {

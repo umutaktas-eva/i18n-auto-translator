@@ -108,7 +108,6 @@ export default {
     please: 'Please',
     total_quantity: 'Total quantity',
     save_new: 'Save & New',
-    ok: 'OK',
     delete: 'Delete',
     success: 'Success',
     yes: 'Yes',
@@ -297,6 +296,7 @@ export default {
     n_months: (ctx) => `${ctx.named('n')} months`,
     n_years: (ctx) => `${ctx.named('n')} years`,
     current: (ctx) => `Current ${ctx.named('field')?.toLowerCase()}`,
+    days_of_inventory: 'Days of Inventory',
     last: (ctx) =>
       `Last ${ctx.named('updated_time') ? 'Updated Time:' : ''} ${ctx
         .named('field')
@@ -428,8 +428,28 @@ export default {
     unsaved_changes: 'You have unsaved changes. Do you want to save?',
     min_max_update:
       'Please keep in mind that All Min & Max prices for SKUs will be updated on Eva. Do you confirm?',
+    renew_token: {
+      title: 'Renew Token',
+      hint: 'Please renew the authorization token from Amazon Seller Central.',
+      confirm_text: 'Go to Seller Central',
+      cancel_text: 'Not Now'
+    }
   },
   select: {
     please_select: 'Please Select',
   },
+  repricer_status: {
+    start_monthly_plan: "Start Monthly Plan",
+    start_monthly_plan_hint: "Start your Monthly Plan to fully use the advantages of Eva!",
+    free_trial_end: "Your free Eva.guru trial has ended", 
+    full_free_trial_end: "Your Eva free trial, where you can try Eva's all features ended.",
+    free_trial_ends_in: "Your free Eva.guru trial ends in",
+    contact_cs_team: "Have a question? Contact our Customer Success Team",
+    finance_hint: "Get the financing to grow your business!",
+    upgrade_your_plan: "Upgrade Your Plan",
+    upgrade_hint: "Upgrade your plan to fully use the advantages of Eva!"
+  },
+  footer: {
+    copyright: `COPYRIGHT ©${new Date().getFullYear()} EVA, All Rights Reserved`
+  }
 };
